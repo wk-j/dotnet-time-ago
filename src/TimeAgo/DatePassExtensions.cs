@@ -1,11 +1,7 @@
 ﻿namespace TimeAgo;
 
-public enum Language {
-    English,
-    Thai
-}
+public static class DatePassExtensions {
 
-public static class DateTimeExtensions {
     public static string AsTimeAgo(this DateTime dateTime, Language language = Language.Thai) {
         var timeSpan = DateTime.Now.Subtract(dateTime);
 
