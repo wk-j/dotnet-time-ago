@@ -3,7 +3,10 @@
 public static class DatePassExtensions {
 
     public static string AsTimeAgo(this DateTime dateTime, Language language = Language.Thai) {
-        var timeSpan = DateTime.Now.Subtract(dateTime);
+        var now = DateTime.UtcNow;
+        dateTime = dateTime.ToUniversalTime();
+
+        var timeSpan = now.Subtract(dateTime);
 
         if (language is Language.English) {
             return timeSpan.TotalSeconds switch {
